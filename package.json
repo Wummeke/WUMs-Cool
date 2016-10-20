@@ -1,0 +1,46 @@
+{
+    "author": "jw.lerutte@gmail.com",
+    "dependencies": {
+        "enamel": "^1.2.1",
+        "pebble-clay": "^1.0.2",
+        "pebble-events": "^1.1.0"
+    },
+    "keywords": [],
+    "name": "wums-cool",
+    "pebble": {
+        "capabilities": [
+            "configurable"
+        ],
+        "displayName": "Wums Cool Watchface",
+        "enableMultiJS": true,
+        "messageKeys": [
+            "LineColor",
+            "DateFormat"
+        ],
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "images/wums cool.png",
+                    "menuIcon": true,
+                    "name": "WUMS_COOL_MENU",
+                    "targetPlatforms": null,
+                    "type": "png"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "aplite",
+            "basalt",
+            "chalk",
+            "diorite",
+            "emery"
+        ],
+        "uuid": "783798ff-91b7-4402-b2f2-1f4efe256a97",
+        "watchapp": {
+            "watchface": true
+        }
+    },
+    "version": "2.1.0"
+}
