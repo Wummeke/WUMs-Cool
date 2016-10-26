@@ -8,7 +8,7 @@
 static EventHandle s_updatesettings_event_handler;
 
 static Window *s_main_window;
-static Layer *s_window_layer;
+// static Layer *s_window_layer;
 static TextLayer *s_time_layer, *s_date_layer; 
 static Layer *s_battery_layer;
 static int s_battery_level;
@@ -70,24 +70,24 @@ static void battery_update_proc(Layer *layer, GContext *ctx) {
 static void main_window_load(Window *window) {
 
   // Get information about the Window
-  // Layer *window_layer = window_get_root_layer(window);
-  s_window_layer = window_get_root_layer(window);
-  GRect unobstructed_bounds = layer_get_unobstructed_bounds(s_window_layer);
+  Layer *window_layer = window_get_root_layer(window);
+  // s_window_layer = window_get_root_layer(window);
+  GRect bounds = layer_get_bounds(window_layer);
   window_set_background_color(window, BG_COL);
   
   // Create the TextLayer
-  s_time_layer = text_layer_create(GRect(0, (unobstructed_bounds.size.h/2)-48, unobstructed_bounds.size.w, 48));
+  s_time_layer = text_layer_create(GRect(0, (bounds.size.h/2)-48, bounds.size.w, 48));
   text_layer_set_background_color(s_time_layer, BG_COL);
   text_layer_set_text_color(s_time_layer, TXT_COL);
   text_layer_set_font(s_time_layer, time_font);
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
 
   // Create battery meter Layer
-  s_battery_layer = layer_create(GRect(0, unobstructed_bounds.size.h/2, unobstructed_bounds.size.w, 2));
+  s_battery_layer = layer_create(GRect(0, 0, bounds.size.w, 10));
   layer_set_update_proc(s_battery_layer, battery_update_proc);
     
   // Create date TextLayer
-  s_date_layer = text_layer_create(GRect(0, (unobstructed_bounds.size.h/2)+2, unobstructed_bounds.size.w, 20));
+  s_date_layer = text_layer_create(GRect(0, (bounds.size.h/2)+2, bounds.size.w, 20));
   text_layer_set_text_color(s_date_layer, TXT_COL);
   text_layer_set_background_color(s_date_layer, BG_COL);
   text_layer_set_font(s_date_layer, date_font);
